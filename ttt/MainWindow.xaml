@@ -50,6 +50,24 @@ Margin="0,0,0,15" Foreground="Black"/>
       IsReadOnly="True" Background="#F0F0F0" Margin="0,2"/>
             </Grid>
         </GroupBox>
+        <GroupBox Grid.Row="2" Header="2. Шифрование" Margin="0,5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
 
+                <TextBox x:Name="txtInput" Height="80" TextWrapping="Wrap" 
+      AcceptsReturn="True" Margin="0,0,0,5" Grid.Row="0"
+      VerticalScrollBarVisibility="Auto"/>
+
+                <StackPanel Orientation="Horizontal" Grid.Row="1">
+                    <Button x:Name="btnEncrypt" Content="➡ Зашифровать" Click="BtnEncrypt_Click" 
+         Width="100" Margin="0,0,10,0" Background="Gray" Foreground="White"/>
+                    <TextBox x:Name="txtOutput" Height="60" TextWrapping="Wrap" 
+          AcceptsReturn="True" Width="450" VerticalScrollBarVisibility="Auto"/>
+                </StackPanel>
+            </Grid>
+        </GroupBox>
     </Grid>
 </Window>

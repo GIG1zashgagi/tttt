@@ -33,5 +33,14 @@ namespace ttt.Tests
             Assert.IsFalse(RsaAlgorithm.IsPrime(15), "15 не является простым");
             Assert.IsFalse(RsaAlgorithm.IsPrime(100), "100 не является простым");
         }
+
+        [TestMethod]
+        public void Test_EncryptDecrypt_EnglishString()
+        {
+            string original = "Hello World!";
+            string encrypted = RsaAlgorithm.EncryptString(original, _publicKey, _modulus);
+            string decrypted = RsaAlgorithm.DecryptString(encrypted, _privateKey, _modulus);
+            Assert.AreEqual(original, decrypted, "Английская строка должна быть корректно расшифрована");
+        }
     }
 }

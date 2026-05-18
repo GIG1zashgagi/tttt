@@ -70,5 +70,14 @@ namespace ttt.Tests
             Assert.AreEqual("", encrypted, "Пустая строка при шифровании должна оставаться пустой");
             Assert.AreEqual("", decrypted, "Пустая строка при дешифровании должна оставаться пустой");
         }
+
+        [TestMethod]
+        public void Test_SingleChar_English()
+        {
+            string original = "A";
+            string encrypted = RsaAlgorithm.EncryptString(original, _publicKey, _modulus);
+            string decrypted = RsaAlgorithm.DecryptString(encrypted, _privateKey, _modulus);
+            Assert.AreEqual(original, decrypted);
+        }
     }
 }

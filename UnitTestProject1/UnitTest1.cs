@@ -5,5 +5,9 @@ using ttt;
 
 namespace ttt.Tests
 {
+    [TestClass]
+    public class UnitTest1
+    {
 
+    }
 }

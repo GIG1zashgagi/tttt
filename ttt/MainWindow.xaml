@@ -5,5 +5,9 @@
         Height="550" Width="700"
         WindowStartupLocation="CenterScreen">
 
+    <Grid Margin="10">
 
+        
+
+    </Grid>
 </Window>

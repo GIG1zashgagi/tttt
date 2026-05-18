@@ -24,5 +24,14 @@ namespace ttt
             }
             return true;  
         }
+        public static int GeneratePrime(int min = 7, int max = 997)
+        {
+            int candidate;
+            do
+            {
+                candidate = _random.Next(min, max + 1);  
+            } while (!IsPrime(candidate));  
+            return candidate;
+        }
     }
 }

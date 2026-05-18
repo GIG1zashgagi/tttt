@@ -121,5 +121,12 @@ namespace ttt
                 SetStatus($"Ошибка расшифрования: {ex.Message}", true);
             }
         }
+        private void BtnClear_Click(object sender, RoutedEventArgs e)
+        {
+            txtInput.Clear();
+            txtOutput.Clear();
+            txtDecrypted.Clear();
+            SetStatus("Все поля очищены");
+        }
     }
 }

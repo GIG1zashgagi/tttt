@@ -138,5 +138,14 @@ namespace ttt.Tests
             string decrypted = RsaAlgorithm.DecryptString(encrypted, _privateKey, _modulus);
             Assert.AreEqual(original, decrypted);
         }
+
+        [TestMethod]
+        public void Test_NewLine()
+        {
+            string original = "Первая строка\nВторая строка\r\nТретья строка";
+            string encrypted = RsaAlgorithm.EncryptString(original, _publicKey, _modulus);
+            string decrypted = RsaAlgorithm.DecryptString(encrypted, _privateKey, _modulus);
+            Assert.AreEqual(original, decrypted);
+        }
     }
 }

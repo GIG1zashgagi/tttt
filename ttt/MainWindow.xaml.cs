@@ -31,5 +31,33 @@ namespace ttt
                 (System.Windows.Media.Brush)System.Windows.Media.Brushes.Red :
                 (System.Windows.Media.Brush)System.Windows.Media.Brushes.Green;
         }
+        private void GenerateKeys()
+        {
+            try
+            {
+                if (!int.TryParse(txtP.Text, out int p))
+                {
+                    SetStatus("Ошибка: p должно быть целым числом", true);
+                    return;
+                }
+
+                if (!int.TryParse(txtQ.Text, out int q))
+                {
+                    SetStatus("Ошибка: q должно быть целым числом", true);
+                    return;
+                }
+
+                RsaAlgorithm.GenerateKeys(p, q, out _publicKey, out _privateKey, out _modulus);
+
+                txtPublicKey.Text = _publicKey.ToString();
+                txtPrivateKey.Text = _privateKey.ToString();
+
+                SetStatus("Ключи успешно сгенерированы");
+            }
+            catch (Exception ex)
+            {
+                SetStatus($"Ошибка генерации ключей: {ex.Message}", true);
+            }
+        }
     }
 }

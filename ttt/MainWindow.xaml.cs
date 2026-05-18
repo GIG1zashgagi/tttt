@@ -6,6 +6,15 @@ namespace ttt
 {
     public partial class MainWindow : Window
     {
-        
+        private BigInteger _publicKey;  
+        private BigInteger _privateKey;  
+        private BigInteger _modulus;    
+
+        public MainWindow()
+        {
+            InitializeComponent();
+
+            Loaded += MainWindow_Loaded;
+        }
     }
 }

@@ -8,10 +8,16 @@ namespace ttt.Tests
     [TestClass]
     public class UnitTest1
     {
-        private const int TestP = 17;   
-        private const int TestQ = 19;   
-        private BigInteger _publicKey;   
-        private BigInteger _privateKey;  
-        private BigInteger _modulus;     
+        private const int TestP = 17;
+        private const int TestQ = 19;
+        private BigInteger _publicKey;
+        private BigInteger _privateKey;
+        private BigInteger _modulus;
+
+        [TestInitialize]
+        public void Init()
+        {
+            RsaAlgorithm.GenerateKeys(TestP, TestQ, out _publicKey, out _privateKey, out _modulus);
+        }
     }
 }

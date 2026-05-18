@@ -23,5 +23,13 @@ namespace ttt
 
             GenerateKeys();
         }
+
+        private void SetStatus(string message, bool isError = false)
+        {
+            lblStatus.Text = isError ? $"{message}" : $"{message}";
+            lblStatus.Foreground = isError ?
+                (System.Windows.Media.Brush)System.Windows.Media.Brushes.Red :
+                (System.Windows.Media.Brush)System.Windows.Media.Brushes.Green;
+        }
     }
 }

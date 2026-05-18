@@ -64,5 +64,27 @@ namespace ttt
             if (t < 0) t += phi;
             return t;
         }
+        public static void GenerateKeys(int p, int q, out BigInteger publicKey, out BigInteger privateKey, out BigInteger modulus)
+        {
+            if (!IsPrime(p)) throw new ArgumentException($"p = {p} не является простым числом");
+            if (!IsPrime(q)) throw new ArgumentException($"q = {q} не является простым числом");
+
+            modulus = p * q;
+
+            BigInteger phi = (p - 1) * (q - 1);
+
+            publicKey = 65537;
+            if (GCD(publicKey, phi) != 1)
+            {
+                for (publicKey = 3; publicKey < phi; publicKey++)
+                {
+                    if (GCD(publicKey, phi) == 1)
+                        break;
+                }
+                if (publicKey >= phi) throw new Exception("Не удалось найти подходящее значение e");
+            }
+
+            privateKey = ModInverse(publicKey, phi);
+        }
     }
 }

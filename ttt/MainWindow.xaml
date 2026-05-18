@@ -69,5 +69,14 @@ Margin="0,0,0,15" Foreground="Black"/>
                 </StackPanel>
             </Grid>
         </GroupBox>
+
+        <GroupBox Grid.Row="3" Header="3. Дешифрование" Margin="0,5">
+            <StackPanel>
+                <Button x:Name="btnDecrypt" Content="⬅ Расшифровать" Click="BtnDecrypt_Click" 
+     Width="100" Margin="0,0,0,5" Background="Gray" Foreground="White"/>
+                <TextBox x:Name="txtDecrypted" Height="80" TextWrapping="Wrap" 
+      IsReadOnly="True" Background="#F5F5F5" VerticalScrollBarVisibility="Auto"/>
+            </StackPanel>
+        </GroupBox>
     </Grid>
 </Window>

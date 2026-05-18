@@ -43,5 +43,26 @@ namespace ttt
             }
             return a;
         }
+        public static BigInteger ModInverse(BigInteger e, BigInteger phi)
+        {
+            BigInteger t = 0, newT = 1;
+            BigInteger r = phi, newR = e;
+
+            while (newR != 0)
+            {
+                BigInteger quotient = r / newR;
+                BigInteger tempT = newT;
+                newT = t - quotient * newT;
+                t = tempT;
+
+                BigInteger tempR = newR;
+                newR = r - quotient * newR;
+                r = tempR;
+            }
+
+            if (r > 1) throw new Exception("e и φ(n) не взаимно просты");
+            if (t < 0) t += phi;
+            return t;
+        }
     }
 }

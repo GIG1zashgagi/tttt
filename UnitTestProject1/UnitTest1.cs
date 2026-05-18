@@ -79,5 +79,14 @@ namespace ttt.Tests
             string decrypted = RsaAlgorithm.DecryptString(encrypted, _privateKey, _modulus);
             Assert.AreEqual(original, decrypted);
         }
+
+        [TestMethod]
+        public void Test_SingleChar_Russian()
+        {
+            string original = "Я";
+            string encrypted = RsaAlgorithm.EncryptString(original, _publicKey, _modulus);
+            string decrypted = RsaAlgorithm.DecryptString(encrypted, _privateKey, _modulus);
+            Assert.AreEqual(original, decrypted);
+        }
     }
 }

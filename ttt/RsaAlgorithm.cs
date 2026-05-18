@@ -103,5 +103,32 @@ namespace ttt
 
             return string.Join(" ", results);
         }
+        public static string DecryptString(string encryptedText, BigInteger privateKey, BigInteger modulus)
+        {
+            if (string.IsNullOrWhiteSpace(encryptedText))
+                return "";
+
+            string[] parts = encryptedText.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+            List<byte> bytes = new List<byte>();
+
+            foreach (string part in parts)
+            {
+                if (BigInteger.TryParse(part, out BigInteger encryptedValue))
+                {
+                    try
+                    {
+                        byte decryptedByte = (byte)BigInteger.ModPow(encryptedValue, privateKey, modulus);
+                        bytes.Add(decryptedByte);
+                    }
+                    catch
+                    {
+                        continue;
+                    }
+                }
+            }
+
+            return Encoding.UTF8.GetString(bytes.ToArray());
+        }
     }
 }

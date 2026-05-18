@@ -60,5 +60,15 @@ namespace ttt.Tests
             string decrypted = RsaAlgorithm.DecryptString(encrypted, _privateKey, _modulus);
             Assert.AreEqual(original, decrypted, "Смешанная строка должна быть корректно расшифрована");
         }
+
+        [TestMethod]
+        public void Test_EmptyString()
+        {
+            string original = "";
+            string encrypted = RsaAlgorithm.EncryptString(original, _publicKey, _modulus);
+            string decrypted = RsaAlgorithm.DecryptString(encrypted, _privateKey, _modulus);
+            Assert.AreEqual("", encrypted, "Пустая строка при шифровании должна оставаться пустой");
+            Assert.AreEqual("", decrypted, "Пустая строка при дешифровании должна оставаться пустой");
+        }
     }
 }

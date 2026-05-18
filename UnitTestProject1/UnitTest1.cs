@@ -96,5 +96,13 @@ namespace ttt.Tests
             BigInteger temp1, temp2, temp3;
             RsaAlgorithm.GenerateKeys(4, 19, out temp1, out temp2, out temp3);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void Test_InvalidQ()
+        {
+            BigInteger temp1, temp2, temp3;
+            RsaAlgorithm.GenerateKeys(17, 21, out temp1, out temp2, out temp3);
+        }
     }
 }

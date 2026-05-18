@@ -86,5 +86,22 @@ namespace ttt
 
             privateKey = ModInverse(publicKey, phi);
         }
+        public static string EncryptString(string text, BigInteger publicKey, BigInteger modulus)
+        {
+            if (string.IsNullOrEmpty(text))
+                return "";
+
+            List<string> results = new List<string>();
+
+            byte[] bytes = Encoding.UTF8.GetBytes(text);
+
+            foreach (byte b in bytes)
+            {
+                BigInteger encrypted = BigInteger.ModPow(b, publicKey, modulus);
+                results.Add(encrypted.ToString());
+            }
+
+            return string.Join(" ", results);
+        }
     }
 }

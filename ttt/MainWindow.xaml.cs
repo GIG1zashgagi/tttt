@@ -59,5 +59,9 @@ namespace ttt
                 SetStatus($"Ошибка генерации ключей: {ex.Message}", true);
             }
         }
+        private void BtnGenerateKeys_Click(object sender, RoutedEventArgs e)
+        {
+            GenerateKeys();
+        }
     }
 }

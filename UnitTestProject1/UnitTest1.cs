@@ -104,5 +104,12 @@ namespace ttt.Tests
             BigInteger temp1, temp2, temp3;
             RsaAlgorithm.GenerateKeys(17, 21, out temp1, out temp2, out temp3);
         }
+
+        [TestMethod]
+        public void Test_DecryptInvalidData()
+        {
+            string result = RsaAlgorithm.DecryptString("abc 123 xyz", _privateKey, _modulus);
+            Assert.AreEqual("", result, "Мусорные данные должны возвращать пустую строку");
+        }
     }
 }

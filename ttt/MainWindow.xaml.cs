@@ -63,5 +63,34 @@ namespace ttt
         {
             GenerateKeys();
         }
+        private void BtnEncrypt_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string input = txtInput.Text;
+
+                if (string.IsNullOrWhiteSpace(input))
+                {
+                    MessageBox.Show("Введите текст для шифрования", "Предупреждение",
+                        MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                if (_publicKey == 0 || _modulus == 0)
+                {
+                    MessageBox.Show("Сначала сгенерируйте ключи", "Предупреждение",
+                        MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                string encrypted = RsaAlgorithm.EncryptString(input, _publicKey, _modulus);
+                txtOutput.Text = encrypted;
+                SetStatus("Текст зашифрован успешно");
+            }
+            catch (Exception ex)
+            {
+                SetStatus($"Ошибка шифрования: {ex.Message}", true);
+            }
+        }
     }
 }

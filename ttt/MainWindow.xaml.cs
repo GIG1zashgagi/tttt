@@ -16,5 +16,12 @@ namespace ttt
 
             Loaded += MainWindow_Loaded;
         }
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            txtP.Text = "17";
+            txtQ.Text = "19";
+
+            GenerateKeys();
+        }
     }
 }

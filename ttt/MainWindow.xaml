@@ -13,6 +13,10 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        
+        <!-- ========== ШАГ 3: ЗАГОЛОВОК ОКНА ========== -->
+        <TextBlock Grid.Row="0" Text="RSA Шифрование / Дешифрование" 
+FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" 
+Margin="0,0,0,15" Foreground="Black"/>
+
     </Grid>
 </Window>

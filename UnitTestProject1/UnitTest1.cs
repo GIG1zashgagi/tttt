@@ -129,5 +129,14 @@ namespace ttt.Tests
             string decrypted = RsaAlgorithm.DecryptString(encrypted, _privateKey, _modulus);
             Assert.AreEqual(original, decrypted, "Специальные символы должны корректно обрабатываться");
         }
+
+        [TestMethod]
+        public void Test_Numbers()
+        {
+            string original = "01234567890123456789";
+            string encrypted = RsaAlgorithm.EncryptString(original, _publicKey, _modulus);
+            string decrypted = RsaAlgorithm.DecryptString(encrypted, _privateKey, _modulus);
+            Assert.AreEqual(original, decrypted);
+        }
     }
 }

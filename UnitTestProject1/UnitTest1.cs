@@ -120,5 +120,14 @@ namespace ttt.Tests
             string decrypted = RsaAlgorithm.DecryptString(encrypted, _privateKey, _modulus);
             Assert.AreEqual(original, decrypted, "Длинная строка должна корректно обрабатываться");
         }
+
+        [TestMethod]
+        public void Test_SpecialCharacters()
+        {
+            string original = "!@#$%^&*()_+{}[]|\\:;\"'<>,.?/~`";
+            string encrypted = RsaAlgorithm.EncryptString(original, _publicKey, _modulus);
+            string decrypted = RsaAlgorithm.DecryptString(encrypted, _privateKey, _modulus);
+            Assert.AreEqual(original, decrypted, "Специальные символы должны корректно обрабатываться");
+        }
     }
 }

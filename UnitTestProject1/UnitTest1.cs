@@ -19,5 +19,19 @@ namespace ttt.Tests
         {
             RsaAlgorithm.GenerateKeys(TestP, TestQ, out _publicKey, out _privateKey, out _modulus);
         }
+
+        [TestMethod]
+        public void Test_IsPrime()
+        {
+            Assert.IsTrue(RsaAlgorithm.IsPrime(17), "17 должно быть простым");
+            Assert.IsTrue(RsaAlgorithm.IsPrime(19), "19 должно быть простым");
+            Assert.IsTrue(RsaAlgorithm.IsPrime(2), "2 должно быть простым");
+            Assert.IsTrue(RsaAlgorithm.IsPrime(997), "997 должно быть простым");
+
+            Assert.IsFalse(RsaAlgorithm.IsPrime(1), "1 не является простым");
+            Assert.IsFalse(RsaAlgorithm.IsPrime(4), "4 не является простым");
+            Assert.IsFalse(RsaAlgorithm.IsPrime(15), "15 не является простым");
+            Assert.IsFalse(RsaAlgorithm.IsPrime(100), "100 не является простым");
+        }
     }
 }

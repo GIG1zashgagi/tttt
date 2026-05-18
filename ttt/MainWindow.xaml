@@ -6,8 +6,13 @@
         WindowStartupLocation="CenterScreen">
 
     <Grid Margin="10">
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
         
-
     </Grid>
 </Window>

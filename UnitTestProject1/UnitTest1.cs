@@ -88,5 +88,13 @@ namespace ttt.Tests
             string decrypted = RsaAlgorithm.DecryptString(encrypted, _privateKey, _modulus);
             Assert.AreEqual(original, decrypted);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void Test_InvalidP()
+        {
+            BigInteger temp1, temp2, temp3;
+            RsaAlgorithm.GenerateKeys(4, 19, out temp1, out temp2, out temp3);
+        }
     }
 }

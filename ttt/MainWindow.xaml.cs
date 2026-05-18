@@ -92,5 +92,34 @@ namespace ttt
                 SetStatus($"Ошибка шифрования: {ex.Message}", true);
             }
         }
+        private void BtnDecrypt_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string input = txtOutput.Text;
+
+                if (string.IsNullOrWhiteSpace(input))
+                {
+                    MessageBox.Show("Нет зашифрованного текста для расшифрования", "Предупреждение",
+                        MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                if (_privateKey == 0 || _modulus == 0)
+                {
+                    MessageBox.Show("Сначала сгенерируйте ключи", "Предупреждение",
+                        MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                string decrypted = RsaAlgorithm.DecryptString(input, _privateKey, _modulus);
+                txtDecrypted.Text = decrypted;
+                SetStatus("Текст расшифрован успешно");
+            }
+            catch (Exception ex)
+            {
+                SetStatus($"Ошибка расшифрования: {ex.Message}", true);
+            }
+        }
     }
 }

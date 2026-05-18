@@ -33,5 +33,15 @@ namespace ttt
             } while (!IsPrime(candidate));  
             return candidate;
         }
+        public static BigInteger GCD(BigInteger a, BigInteger b)
+        {
+            while (b != 0)
+            {
+                BigInteger temp = b;
+                b = a % b;
+                a = temp;
+            }
+            return a;
+        }
     }
 }

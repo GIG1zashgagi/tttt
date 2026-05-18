@@ -51,5 +51,14 @@ namespace ttt.Tests
             string decrypted = RsaAlgorithm.DecryptString(encrypted, _privateKey, _modulus);
             Assert.AreEqual(original, decrypted, "Русская строка должна быть корректно расшифрована");
         }
+
+        [TestMethod]
+        public void Test_EncryptDecrypt_MixedString()
+        {
+            string original = "Hello Привет 123!@# АБВ abc";
+            string encrypted = RsaAlgorithm.EncryptString(original, _publicKey, _modulus);
+            string decrypted = RsaAlgorithm.DecryptString(encrypted, _privateKey, _modulus);
+            Assert.AreEqual(original, decrypted, "Смешанная строка должна быть корректно расшифрована");
+        }
     }
 }

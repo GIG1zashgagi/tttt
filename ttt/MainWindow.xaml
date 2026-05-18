@@ -78,5 +78,13 @@ Margin="0,0,0,15" Foreground="Black"/>
       IsReadOnly="True" Background="#F5F5F5" VerticalScrollBarVisibility="Auto"/>
             </StackPanel>
         </GroupBox>
+        <GroupBox Grid.Row="4" Header="4. Управление" Margin="0,5">
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="btnClear" Content="Очистить всё" Click="BtnClear_Click" 
+     Width="100" Margin="0,0,10,0"/>
+                <TextBlock x:Name="lblStatus" Text="Готово" VerticalAlignment="Center" 
+        Foreground="Gray" FontWeight="SemiBold"/>
+            </StackPanel>
+        </GroupBox>
     </Grid>
 </Window>

@@ -111,5 +111,14 @@ namespace ttt.Tests
             string result = RsaAlgorithm.DecryptString("abc 123 xyz", _privateKey, _modulus);
             Assert.AreEqual("", result, "Мусорные данные должны возвращать пустую строку");
         }
+
+        [TestMethod]
+        public void Test_LongString()
+        {
+            string original = new string('A', 100) + new string('Б', 100);
+            string encrypted = RsaAlgorithm.EncryptString(original, _publicKey, _modulus);
+            string decrypted = RsaAlgorithm.DecryptString(encrypted, _privateKey, _modulus);
+            Assert.AreEqual(original, decrypted, "Длинная строка должна корректно обрабатываться");
+        }
     }
 }
